@@ -25,6 +25,14 @@
 <input type="text" name="${AttributeConst.REP_TITLE.getValue()}" id="${AttributeConst.REP_TITLE.getValue()}" value="${report.title}" />
 <br /><br />
 
+<select name="${AttributeConst.SITUATION.getValue()}">
+    <option value="${AttributeConst.SIT_ESTIMATE.getValue()}">見積・提案中</option>
+    <option value="${AttributeConst.SIT_NEGOTIATIONS.getValue()}"> 商談中</option>
+    <option value="${AttributeConst.SIT_COMPLETION.getValue()}"> 完了</option>
+</select>
+<br /><br />
+
+
 <label for="${AttributeConst.REP_CONTENT.getValue()}">内容</label><br />
 <textarea  name="${AttributeConst.REP_CONTENT.getValue()}" id="${AttributeConst.REP_CONTENT.getValue()}" rows="10" cols="50">${report.content}</textarea>
 <br /><br />

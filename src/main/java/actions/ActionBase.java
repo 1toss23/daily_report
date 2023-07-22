@@ -40,11 +40,11 @@ public abstract class ActionBase {
         this.response = servletResponse;
     }
 
-    /**
-     * フロントコントローラから呼び出されるメソッド
-     * @throws ServletException
-     * @throws IOException
-     */
+	/**
+	 * フロントコントローラから呼び出されるメソッド
+	 * @throws ServletException
+	 * @throws IOException
+	 */
     public abstract void process() throws ServletException, IOException;
 
     /**
@@ -61,7 +61,7 @@ public abstract class ActionBase {
             //パラメータからcommandを取得
             String command = request.getParameter(ForwardConst.CMD.getValue());
 
-            //ommandに該当するメソッドを実行する
+            //commandに該当するメソッドを実行する
             //(例: action=Employee command=show の場合 EmployeeActionクラスのshow()メソッドを実行する)
             commandMethod = this.getClass().getDeclaredMethod(command, new Class[0]);
             commandMethod.invoke(this, new Object[0]); //メソッドに渡す引数はなし

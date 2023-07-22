@@ -48,7 +48,19 @@ public enum AttributeConst {
     REP_ID("id"),
     REP_DATE("report_date"),
     REP_TITLE("title"),
-    REP_CONTENT("content_msg");
+    REP_CONTENT("content_msg"),
+
+	//商談状況
+	SITUATION("situation"),
+	SIT_ESTIMATE("esitimate"), //見積、提案中
+	SIT_NEGOTIATIONS("negotiations"), //商談中
+	SIT_COMPLETION("completion"),//完了
+
+	//いいね
+	REACTION("reaction"),
+	REA_FLAG_TRUE(1),
+	REA_FLAG_FALSE(0);
+
 
     private final String text;
     private final Integer i;

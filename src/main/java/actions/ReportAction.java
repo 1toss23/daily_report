@@ -237,4 +237,6 @@ public class ReportAction extends ActionBase {
             }
         }
     }
+ // いいね実行
+
 }

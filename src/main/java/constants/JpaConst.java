@@ -49,6 +49,14 @@ public interface JpaConst {
     String JPQL_PARM_PASSWORD = "password"; //パスワード
     String JPQL_PARM_EMPLOYEE = "employee"; //従業員
 
+
+    //いいねテーブル
+    String TABLE_LIKE = "like";
+
+    int REA_FLAG_TRUE = 1;
+    int REA_FLAG_FALSE = 0;
+
+
     //NamedQueryの nameとquery
     //全ての従業員をidの降順に取得する
     String Q_EMP_GET_ALL = ENTITY_EMP + ".getAll"; //name
