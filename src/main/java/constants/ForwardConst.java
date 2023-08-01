@@ -12,6 +12,7 @@ public enum ForwardConst {
     ACT_EMP("Employee"),
     ACT_REP("Report"),
     ACT_AUTH("Auth"),
+    ACT_LIKE("Like"),
 
     //command
     CMD("command"),
@@ -38,9 +39,10 @@ public enum ForwardConst {
     FW_REP_INDEX("reports/index"),
     FW_REP_SHOW("reports/show"),
     FW_REP_NEW("reports/new"),
-    FW_REP_EDIT("reports/edit"),
+    FW_REP_EDIT("reports/edit");
 
-	FW_PICTURE_GOOD("./good.png");
+
+
 
     /**
      * 文字列

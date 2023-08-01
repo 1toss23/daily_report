@@ -3,6 +3,8 @@ package actions.views;
 import java.util.ArrayList;
 import java.util.List;
 
+import constants.AttributeConst;
+import constants.JpaConst;
 import models.Report;
 
 /**
@@ -11,23 +13,25 @@ import models.Report;
  */
 public class ReportConverter {
 
-    /**
-     * ViewモデルのインスタンスからDTOモデルのインスタンスを作成する
-     * @param rv ReportViewのインスタンス
-     * @return Reportのインスタンス
-     */
-    public static Report toModel(ReportView rv) {
-        return new Report(
-                rv.getId(),
-                EmployeeConverter.toModel(rv.getEmployee()),
-                rv.getReportDate(),
-                rv.getTitle(),
-                rv.getContent(),
-                rv.getCreatedAt(),
-                rv.getUpdatedAt());
-    }
+	/**
+	 * ViewモデルのインスタンスからDTOモデルのインスタンスを作成する
+	 * @param rv ReportViewのインスタンス
+	 * @return Reportのインスタンス
+	 */
+	public static Report toModel(ReportView rv) {
+		return new Report(
+				rv.getId(),
+				EmployeeConverter.toModel(rv.getEmployee()),
+				rv.getReportDate(),
+				rv.getTitle(),
+				rv.getContent(),
+				rv.getCreatedAt(),
+				rv.getUpdatedAt(),
+				rv.getLikeFlag() == null ? null : rv.getLikeFlag() == AttributeConst.LIKE_ON.getIntegerValue() ? JpaConst.LIKE_ON : JpaConst.LIKE_OFF);
 
-    /**
+	}
+
+	/**
      * DTOモデルのインスタンスからViewモデルのインスタンスを作成する
      * @param r Reportのインスタンス
      * @return ReportViewのインスタンス
@@ -45,25 +49,26 @@ public class ReportConverter {
                 r.getTitle(),
                 r.getContent(),
                 r.getCreatedAt(),
-                r.getUpdatedAt());
+                r.getUpdatedAt(),
+                r.getLikeFlag() == null ? null : r.getLikeFlag() == JpaConst.LIKE_ON ? AttributeConst.LIKE_ON.getIntegerValue() : AttributeConst.LIKE_OFF.getIntegerValue());
     }
 
-    /**
-     * DTOモデルのリストからViewモデルのリストを作成する
-     * @param list DTOモデルのリスト
-     * @return Viewモデルのリスト
-     */
-    public static List<ReportView> toViewList(List<Report> list) {
-        List<ReportView> evs = new ArrayList<>();
+	/**
+	 * DTOモデルのリストからViewモデルのリストを作成する
+	 * @param list DTOモデルのリスト
+	 * @return Viewモデルのリスト
+	 */
+	public static List<ReportView> toViewList(List<Report> list) {
+		List<ReportView> rvs = new ArrayList<>();
 
-        for (Report r : list) {
-            evs.add(toView(r));
-        }
+		for (Report r : list) {
+			rvs.add(toView(r));
+		}
 
-        return evs;
-    }
+		return rvs;
+	}
 
-    /**
+	/**
      * Viewモデルの全フィールドの内容をDTOモデルのフィールドにコピーする
      * @param r DTOモデル(コピー先)
      * @param rv Viewモデル(コピー元)
@@ -76,6 +81,8 @@ public class ReportConverter {
         r.setContent(rv.getContent());
         r.setCreatedAt(rv.getCreatedAt());
         r.setUpdatedAt(rv.getUpdatedAt());
+        r.setLikeFlag(rv.getLikeFlag());
+
 
     }
 

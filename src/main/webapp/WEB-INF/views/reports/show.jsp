@@ -4,10 +4,15 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ page import="constants.ForwardConst"%>
 
+
+<c:set var="actLik" value="${ForwardConst.ACT_LIKE.getValue()}" />
 <c:set var="actRep" value="${ForwardConst.ACT_REP.getValue()}" />
 <c:set var="commIdx" value="${ForwardConst.CMD_INDEX.getValue()}" />
 <c:set var="commEdt" value="${ForwardConst.CMD_EDIT.getValue()}" />
-<c:set var="getPic" value="${FW_PICTURE_GOOD.getValue()}" />
+<c:set var="commUpd" value="${ForwardConst.CMD_UPDATE.getValue()}" />
+<c:set var="commDes" value="${ForwardConst.CMD_DESTROY.getValue()}" />
+
+
 
 <c:import url="/WEB-INF/views/layout/app.jsp">
 	<c:param name="content">
@@ -46,10 +51,12 @@
 					<td><fmt:formatDate value="${updateDay}"
 							pattern="yyyy-MM-dd HH:mm:ss" /></td>
 				</tr>
+
 			</tbody>
 		</table>
 
-		<c:if test="${sessionScope.login_employee.id == report.employee.id}">
+		<c:if test="${login_employee.id == report.employee.id}">
+
 			<p>
 				<a
 					href="<c:url value='?action=${actRep}&command=${commEdt}&id=${report.id}' />">この日報を編集する</a>
@@ -57,25 +64,31 @@
 		</c:if>
 
 
-		<div>
-			<button type="submit">
-				<img src='/images/good.png' alt="送信" />
-			</button>
-		</div>
+		<c:if test="${login_employee.id != report.employee.id}">
+		  <c:choose>
+		    <c:when test="${report.likeFlag == AttributeConst.LIKE_OFF.getIntegerValue()}">
+		      <input
+		        type="image"
+		        class="button"
+		        alt="未いいね"
+		        src="images/good_off.jpg"
+		        onclick="location.href='?action=${actLik}&command=${commUpd}&id=${report.id}'" >
+		    </c:when>
+		    <c:otherwise>
+			  <input
+		        type="image"
+		        class="button"
+		        alt="いいね"
+		        src="images/good_on.png"
+		        onclick="location.href='?action=${actLik}&command=${commDes}&id=${report.id}'" >
+			</c:otherwise>
+		  </c:choose>
+		</c:if>
 
-		<div>
-			<img src="/images/good.png " alt="送信" />
-		</div>
 
-		<input type="image"
-			   src="C:\pleiades\workspace\daily_report_system\src\main\webapp\images\good.png"
-			   alt="送信">
 
-	    <input type="image"
-			   src="/images/good.png"
-			   alt="送信">
 		<p>
-			<a href="<c:url value='?action=${actRep}&command=${commIdx}' />">一覧に戻る</a>
+			<a href="<c:url value='?action=${actRep}&command=${commIdx}'/>">一覧に戻る</a>
 		</p>
 	</c:param>
 </c:import>

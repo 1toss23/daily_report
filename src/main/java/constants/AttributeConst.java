@@ -49,6 +49,7 @@ public enum AttributeConst {
     REP_DATE("report_date"),
     REP_TITLE("title"),
     REP_CONTENT("content_msg"),
+    REP_LIKE_FLAG("like_flag"),
 
 	//商談状況
 	SITUATION("situation"),
@@ -57,9 +58,8 @@ public enum AttributeConst {
 	SIT_COMPLETION("completion"),//完了
 
 	//いいね
-	REACTION("reaction"),
-	REA_FLAG_TRUE(1),
-	REA_FLAG_FALSE(0);
+	LIKE_ON(1),
+	LIKE_OFF(0);
 
 
     private final String text;

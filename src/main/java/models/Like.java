@@ -1,17 +1,6 @@
 package models;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-
-import constants.JpaConst;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
-
+/*
 @Getter
 @Setter
 @NoArgsConstructor
@@ -19,11 +8,23 @@ import lombok.Setter;
 @Entity
 public class Like {
 
+
 	@Id
 	    @Column(name = JpaConst.EMP_COL_ID)
 	    @GeneratedValue(strategy = GenerationType.IDENTITY)
 	    private Integer id;
 
+	 @ManyToOne
+	    @JoinColumn(name = JpaConst.LIKE_COL_EMP, nullable = false)
+	    private Employee employee;
 
+
+	 @ManyToOne
+	   @JoinColumn(name = JpaConst.LIKE_COL_REP, nullable = false)
+	   private Report report;
+
+	 @Column(name = JpaConst.LIKE_COL_LIKE_FLAG, nullable = false)
+	   private Integer likeFlag;
 
 }
+*/

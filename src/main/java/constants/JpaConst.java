@@ -39,6 +39,28 @@ public interface JpaConst {
     String REP_COL_CONTENT = "content"; //日報の内容
     String REP_COL_CREATED_AT = "created_at"; //登録日時
     String REP_COL_UPDATED_AT = "updated_at"; //更新日時
+    String REP_COL_LIKE_FLAG = "like_flag";
+
+    int LIKE_ON = 1;
+    int LIKE_OFF = 0;
+
+
+
+
+    /*LIKEテーブル
+    String TABLE_LIKE = "like";
+    //カラム
+    String LIKE_COL_ID = "id";
+    String LIKE_COL_EMP = "employee_id";
+    String LIKE_COL_REP = "reports_id";
+    String LIKE_COL_LIKE_FLAG = "like_flag";
+
+    int LIKE_ON = 1;
+    int LIKE_OFF = 0;
+    */
+
+
+
 
     //Entity名
     String ENTITY_EMP = "employee"; //従業員
@@ -50,11 +72,6 @@ public interface JpaConst {
     String JPQL_PARM_EMPLOYEE = "employee"; //従業員
 
 
-    //いいねテーブル
-    String TABLE_LIKE = "like";
-
-    int REA_FLAG_TRUE = 1;
-    int REA_FLAG_FALSE = 0;
 
 
     //NamedQueryの nameとquery
