@@ -51,11 +51,6 @@ public enum AttributeConst {
     REP_CONTENT("content_msg"),
     REP_LIKE_FLAG("like_flag"),
 
-	//商談状況
-	SITUATION("situation"),
-	SIT_ESTIMATE("esitimate"), //見積、提案中
-	SIT_NEGOTIATIONS("negotiations"), //商談中
-	SIT_COMPLETION("completion"),//完了
 
 	//いいね
 	LIKE_ON(1),

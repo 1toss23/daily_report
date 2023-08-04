@@ -3,7 +3,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ page import="constants.ForwardConst"%>
-
+<%@ page import="constants.AttributeConst"%>
 
 <c:set var="actLik" value="${ForwardConst.ACT_LIKE.getValue()}" />
 <c:set var="actRep" value="${ForwardConst.ACT_REP.getValue()}" />
@@ -24,7 +24,6 @@
 				<tr>
 					<th>氏名</th>
 					<td><c:out value="${report.employee.name}" /></td>
-				</tr>
 				<tr>
 					<th>日付</th>
 					<fmt:parseDate value="${report.reportDate}" pattern="yyyy-MM-dd"
