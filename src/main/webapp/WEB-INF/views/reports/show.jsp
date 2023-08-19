@@ -64,27 +64,20 @@
 
 
 		<c:if test="${login_employee.id != report.employee.id}">
-		  <c:choose>
-		    <c:when test="${report.likeFlag == AttributeConst.LIKE_OFF.getIntegerValue()}">
-		      <input
-		        type="image"
-		        class="button"
-		        alt="未いいね"
-		        src="images/good_off.jpg"
-		        onclick="location.href='?action=${actLik}&command=${commUpd}&id=${report.id}'" >
-		    </c:when>
-		    <c:otherwise>
-			  <input
-		        type="image"
-		        class="button"
-		        alt="いいね"
-		        src="images/good_on.png"
-		        onclick="location.href='?action=${actLik}&command=${commDes}&id=${report.id}'" >
-			</c:otherwise>
-		  </c:choose>
+			<c:choose>
+				<c:when
+					test="${report.likeFlag == AttributeConst.LIKE_OFF.getIntegerValue()}">
+					<input type="image" class="button" alt="未いいね"
+						src="images/good_off.jpg"
+						onclick="location.href='?action=${actLik}&command=${commUpd}&id=${report.id}'">
+				</c:when>
+				<c:otherwise>
+					<input type="image" class="button" alt="いいね"
+						src="images/good_on.png"
+						onclick="location.href='?action=${actLik}&command=${commDes}&id=${report.id}'">
+				</c:otherwise>
+			</c:choose>
 		</c:if>
-
-
 
 		<p>
 			<a href="<c:url value='?action=${actRep}&command=${commIdx}'/>">一覧に戻る</a>

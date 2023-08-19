@@ -13,9 +13,11 @@ public enum ForwardConst {
     ACT_REP("Report"),
     ACT_AUTH("Auth"),
     ACT_LIKE("Like"),
+    ACT_CLI("Client"),
 
     //command
     CMD("command"),
+
     CMD_NONE(""),
     CMD_INDEX("index"),
     CMD_SHOW("show"),
@@ -39,10 +41,11 @@ public enum ForwardConst {
     FW_REP_INDEX("reports/index"),
     FW_REP_SHOW("reports/show"),
     FW_REP_NEW("reports/new"),
-    FW_REP_EDIT("reports/edit");
-
-
-
+    FW_REP_EDIT("reports/edit"),
+	FW_CLI_INDEX("client/index"),
+	FW_CLI_SHOW("client/show"),
+	FW_CLI_NEW("client/new"),
+	FW_CLI_EDIT("client/edit");
 
     /**
      * 文字列

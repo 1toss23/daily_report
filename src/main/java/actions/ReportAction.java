@@ -6,6 +6,7 @@ import java.util.List;
 
 import javax.servlet.ServletException;
 
+import actions.views.ClientView;
 import actions.views.EmployeeView;
 import actions.views.ReportView;
 import constants.AttributeConst;
@@ -106,6 +107,8 @@ public class ReportAction extends ActionBase {
 			//セッションからログイン中の従業員情報を取得
 			EmployeeView ev = (EmployeeView) getSessionScope(AttributeConst.LOGIN_EMP);
 
+			ClientView cv = (ClientView) getSessionScope(AttributeConst.CLI_ID);
+
 			//パラメータの値をもとに日報情報のインスタンスを作成する
 			ReportView rv = new ReportView(
 					null,
@@ -115,8 +118,8 @@ public class ReportAction extends ActionBase {
 					getRequestParam(AttributeConst.REP_CONTENT),
 					null,
 					null,
-					AttributeConst.LIKE_OFF.getIntegerValue());
-
+					AttributeConst.LIKE_OFF.getIntegerValue(),
+					cv);
 
 			//日報情報登録
 			List<String> errors = service.create(rv);
@@ -136,7 +139,6 @@ public class ReportAction extends ActionBase {
 
 				//セッションに登録完了のフラッシュメッセージを設定
 				putSessionScope(AttributeConst.FLUSH, MessageConst.I_REGISTERED.getMessage());
-
 
 				//一覧画面にリダイレクト
 				redirect(ForwardConst.ACT_REP, ForwardConst.CMD_INDEX);

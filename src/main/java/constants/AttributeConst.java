@@ -51,11 +51,23 @@ public enum AttributeConst {
     REP_CONTENT("content_msg"),
     REP_LIKE_FLAG("like_flag"),
 
-
 	//いいね
 	LIKE_ON(1),
-	LIKE_OFF(0);
+	LIKE_OFF(0),
 
+	//顧客管理
+	CLIENT("client"),
+	CLIENTS("clients"),
+	CLI_ID("id"),
+	CLI_NAME("name"),
+	CLI_COUNT("client_count"),
+	CLI_ADDRESS("address"),
+	CLI_SITUATION("situation"),
+	CLI_DATE("client_date"),
+
+	//顧客の商談状況
+	SIT_SALE(0),
+	SIT_COMPLET(1);
 
     private final String text;
     private final Integer i;

@@ -28,7 +28,6 @@ public class ReportConverter {
 				rv.getCreatedAt(),
 				rv.getUpdatedAt(),
 				rv.getLikeFlag() == null ? null : rv.getLikeFlag() == AttributeConst.LIKE_ON.getIntegerValue() ? JpaConst.LIKE_ON : JpaConst.LIKE_OFF);
-
 	}
 
 	/**
@@ -82,8 +81,6 @@ public class ReportConverter {
         r.setCreatedAt(rv.getCreatedAt());
         r.setUpdatedAt(rv.getUpdatedAt());
         r.setLikeFlag(rv.getLikeFlag());
-
-
     }
 
 }

@@ -138,7 +138,6 @@ public class ReportService extends ServiceBase {
         em.getTransaction().begin();
         em.persist(ReportConverter.toModel(rv));
         em.getTransaction().commit();
-
     }
 
     /**
