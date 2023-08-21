@@ -93,7 +93,7 @@ public class Report {
 	/*
 	 *日報に関する顧客
 	 */
-//	@ManyToOne
-//	@JoinColumn(name = JpaConst.REP_COL_EMP, nullable = false)
-//	private Client client;
+	@ManyToOne
+	@JoinColumn(name = JpaConst.REP_COL_CLIENT, nullable = false)
+	private Client client;
 }

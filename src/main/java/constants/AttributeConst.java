@@ -67,7 +67,10 @@ public enum AttributeConst {
 
 	//顧客の商談状況
 	SIT_SALE(0),
-	SIT_COMPLET(1);
+	SIT_COMPLET(1),
+
+	//顧客情報
+	CLIENT_REP("client_report");
 
     private final String text;
     private final Integer i;

@@ -61,5 +61,5 @@ public class ReportView {
     /*
      * 日報の顧客
      */
-//    private ClientView client;
+    private ClientView client;
 }

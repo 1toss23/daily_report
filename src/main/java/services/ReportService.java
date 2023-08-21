@@ -11,12 +11,12 @@ import constants.JpaConst;
 import models.Report;
 import models.validators.ReportValidator;
 
-/**
+/*
  * 日報テーブルの操作に関わる処理を行うクラス
  */
 public class ReportService extends ServiceBase {
 
-    /**
+    /*
      * 指定した従業員が作成した日報データを、指定されたページ数の一覧画面に表示する分取得しReportViewのリストで返却する
      * @param employee 従業員
      * @param page ページ数
@@ -32,7 +32,7 @@ public class ReportService extends ServiceBase {
         return ReportConverter.toViewList(reports);
     }
 
-    /**
+    /*
      * 指定した従業員が作成した日報データの件数を取得し、返却する
      * @param employee
      * @return 日報データの件数
@@ -46,7 +46,7 @@ public class ReportService extends ServiceBase {
         return count;
     }
 
-    /**
+    /*
      * 指定されたページ数の一覧画面に表示する日報データを取得し、ReportViewのリストで返却する
      * @param page ページ数
      * @return 一覧画面に表示するデータのリスト
@@ -60,7 +60,7 @@ public class ReportService extends ServiceBase {
         return ReportConverter.toViewList(reports);
     }
 
-    /**
+    /*
      * 日報テーブルのデータの件数を取得し、返却する
      * @return データの件数
      */
@@ -70,7 +70,7 @@ public class ReportService extends ServiceBase {
         return reports_count;
     }
 
-    /**
+    /*
      * idを条件に取得したデータをReportViewのインスタンスで返却する
      * @param id
      * @return 取得データのインスタンス
@@ -79,7 +79,7 @@ public class ReportService extends ServiceBase {
         return ReportConverter.toView(findOneInternal(id));
     }
 
-    /**
+    /*
      * 画面から入力された日報の登録内容を元にデータを1件作成し、日報テーブルに登録する
      * @param rv 日報の登録内容
      * @return バリデーションで発生したエラーのリスト
@@ -97,7 +97,7 @@ public class ReportService extends ServiceBase {
         return errors;
     }
 
-    /**
+    /*
      * 画面から入力された日報の登録内容を元に、日報データを更新する
      * @param rv 日報の更新内容
      * @return バリデーションで発生したエラーのリスト
@@ -120,7 +120,7 @@ public class ReportService extends ServiceBase {
         return errors;
     }
 
-    /**
+    /*
      * idを条件にデータを1件取得する
      * @param id
      * @return 取得データのインスタンス
@@ -129,7 +129,7 @@ public class ReportService extends ServiceBase {
         return em.find(Report.class, id);
     }
 
-    /**
+    /*
      * 日報データを1件登録する
      * @param rv 日報データ
      */
@@ -140,7 +140,7 @@ public class ReportService extends ServiceBase {
         em.getTransaction().commit();
     }
 
-    /**
+    /*
      * 日報データを更新する
      * @param rv 日報データ
      */

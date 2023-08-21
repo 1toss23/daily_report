@@ -39,7 +39,7 @@ public interface JpaConst {
 	String REP_COL_CONTENT = "content"; //日報の内容
 	String REP_COL_CREATED_AT = "created_at"; //登録日時
 	String REP_COL_UPDATED_AT = "updated_at"; //更新日時
-	String REP_COL_LIKE_FLAG = "like_flag";  //いいねフラグ
+	String REP_COL_LIKE_FLAG = "like_flag"; //いいねフラグ
 	String REP_COL_CLIENT = "client_id"; //日報に関する顧客情報
 
 	int LIKE_ON = 1;
@@ -114,4 +114,8 @@ public interface JpaConst {
 	//顧客に関する日報の取得
 	String Q_REP_COUNT_ALL_CLIENT = ENTITY_REP + "getAllClient";
 	String Q_REP_COUNT_ALL_CLIENT_DEF = "SELECT COUNT(r) FROM Report AS r WHERE r.client = :" + JPQL_PARM_CLIENT;
+
+	//指定した顧客情報に関した日報を全件idの降順で取得する
+	String Q_REP_GET_ALL_CLIENT = ENTITY_REP + ".getAllClient";
+	String Q_REP_GET_ALL_CILENT_DEF = "SELECT r FROM Report AS r WHERE r.client = :" + JPQL_PARM_CLIENT;
 }

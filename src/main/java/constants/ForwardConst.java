@@ -14,6 +14,7 @@ public enum ForwardConst {
     ACT_AUTH("Auth"),
     ACT_LIKE("Like"),
     ACT_CLI("Client"),
+    ACT_C_REP("C_Report"),
 
     //command
     CMD("command"),

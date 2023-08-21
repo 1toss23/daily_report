@@ -27,7 +27,9 @@ public class ReportConverter {
 				rv.getContent(),
 				rv.getCreatedAt(),
 				rv.getUpdatedAt(),
-				rv.getLikeFlag() == null ? null : rv.getLikeFlag() == AttributeConst.LIKE_ON.getIntegerValue() ? JpaConst.LIKE_ON : JpaConst.LIKE_OFF);
+				rv.getLikeFlag() == null ? null : rv.getLikeFlag() == AttributeConst.LIKE_ON.getIntegerValue() ? JpaConst.LIKE_ON : JpaConst.LIKE_OFF,
+		        ClientConverter.toModel(rv.getClient()));
+
 	}
 
 	/**
@@ -49,7 +51,8 @@ public class ReportConverter {
                 r.getContent(),
                 r.getCreatedAt(),
                 r.getUpdatedAt(),
-                r.getLikeFlag() == null ? null : r.getLikeFlag() == JpaConst.LIKE_ON ? AttributeConst.LIKE_ON.getIntegerValue() : AttributeConst.LIKE_OFF.getIntegerValue());
+                r.getLikeFlag() == null ? null : r.getLikeFlag() == JpaConst.LIKE_ON ? AttributeConst.LIKE_ON.getIntegerValue() : AttributeConst.LIKE_OFF.getIntegerValue(),
+                ClientConverter.toView(r.getClient()));
     }
 
 	/**
@@ -81,6 +84,7 @@ public class ReportConverter {
         r.setCreatedAt(rv.getCreatedAt());
         r.setUpdatedAt(rv.getUpdatedAt());
         r.setLikeFlag(rv.getLikeFlag());
+        r.setClient(ClientConverter.toModel(rv.getClient()));
     }
 
 }
