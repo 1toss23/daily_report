@@ -54,7 +54,7 @@ public class C_ReportAction extends ActionBase {
 
 	public void index() throws ServletException, IOException {
 
-		ClientView client = service.findOne(toNumber(getRequestParam(AttributeConst.CLI_ID)))
+		ClientView client = service.findOne(toNumber(getRequestParam(AttributeConst.CLI_ID)));
 
 		int page = getPage();
 		List<ReportView> report = service.getClientPerPage(client, page);

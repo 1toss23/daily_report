@@ -116,6 +116,6 @@ public interface JpaConst {
 	String Q_REP_COUNT_ALL_CLIENT_DEF = "SELECT COUNT(r) FROM Report AS r WHERE r.client = :" + JPQL_PARM_CLIENT;
 
 	//指定した顧客情報に関した日報を全件idの降順で取得する
-	String Q_REP_GET_ALL_CLIENT = ENTITY_REP + ".getAllClient";
+	String Q_REP_GET_ALL_CLIENT = ENTITY_REP + ".countAllClient";
 	String Q_REP_GET_ALL_CILENT_DEF = "SELECT r FROM Report AS r WHERE r.client = :" + JPQL_PARM_CLIENT;
 }
