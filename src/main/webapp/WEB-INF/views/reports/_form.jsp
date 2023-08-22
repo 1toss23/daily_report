@@ -30,6 +30,12 @@
 <br />
 <br />
 
+<label>顧客名</label>
+<br />
+<c:out value="${sessionScope.client.name}" />
+<br />
+<br />
+
 <label for="${AttributeConst.REP_TITLE.getValue()}">タイトル</label>
 <br />
 <input type="text" name="${AttributeConst.REP_TITLE.getValue()}"

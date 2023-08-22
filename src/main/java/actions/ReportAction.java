@@ -75,10 +75,13 @@ public class ReportAction extends ActionBase {
 
 		putRequestScope(AttributeConst.TOKEN, getTokenId()); //CSRF対策用トークン
 
+		ClientView cv = service.findClient(toNumber(getRequestParam(AttributeConst.CLI_ID)));
+
 		//日報情報の空インスタンスに、日報の日付＝今日の日付を設定する
 		ReportView rv = new ReportView();
 		rv.setReportDate(LocalDate.now());
 		putRequestScope(AttributeConst.REPORT, rv); //日付のみ設定済みの日報インスタンス
+		putSessionScope(AttributeConst.CLIENT, cv);
 
 		//新規登録画面を表示
 		forward(ForwardConst.FW_REP_NEW);
@@ -107,7 +110,7 @@ public class ReportAction extends ActionBase {
 			//セッションからログイン中の従業員情報を取得
 			EmployeeView ev = (EmployeeView) getSessionScope(AttributeConst.LOGIN_EMP);
 
-			ClientView cv = (ClientView) getSessionScope(AttributeConst.CLI_ID);
+			ClientView cv = (ClientView) getSessionScope(AttributeConst.CLIENT);
 
 			//パラメータの値をもとに日報情報のインスタンスを作成する
 			ReportView rv = new ReportView(

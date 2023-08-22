@@ -5,6 +5,7 @@
 <%@ page import="constants.ForwardConst"%>
 <%@ page import="constants.AttributeConst"%>
 
+<c:set var="actRep" value="${ForwardConst.ACT_REP.getValue()}" />
 <c:set var="actCli" value="${ForwardConst.ACT_CLI.getValue()}" />
 <c:set var="actCR" value="${ForwardConst.ACT_C_REP.getValue()}" />
 <c:set var="commIdx" value="${ForwardConst.CMD_INDEX.getValue()}" />
@@ -26,30 +27,30 @@
 				<tr>
 					<th class="client_name">顧客名</th>
 					<th class="client_situation">状況</th>
-					<th class="client_action">操作</th>
+					<th class="client_action">詳細</th>
+					<th class="client_report">日報作成</th>
 				</tr>
 				<c:forEach var="client" items="${client}" varStatus="status">
 					<tr class="row${status.count % 2}">
 						<td class="client_name"><c:out value="${client.name}" /></td>
 						<td class="client.situation"><c:choose>
-								<c:when
-									test="${client.situationFlag == AttributeConst.SIT_SALE.getIntegerValue()}">
-					  	  商談中
-					  	</c:when>
+								<c:when test="${client.situationFlag == AttributeConst.SIT_TRUE.getIntegerValue()}">商談中</c:when>
 								<c:otherwise>
-					  	  商談完了
-					  	</c:otherwise>
+					  	           商談完了
+					  	        </c:otherwise>
 							</c:choose></td>
-					<td><c:choose>
-							<c:when
-								test="${client.deleteFlag == AttributeConst.DEL_FLAG_TRUE.getIntegerValue()}">
-                                    （削除済み）
-                                </c:when>
-							<c:otherwise>
-								<a
-									href="<c:url value='?action=${actCR}&command=${commIdx}&id=${client.id}' />">詳細を見る</a>
-							</c:otherwise>
-						</c:choose></td>
+						<td><c:choose>
+								<c:when test="${client.deleteFlag == AttributeConst.DEL_FLAG_TRUE.getIntegerValue()}">(削除済み)</c:when>
+								<c:otherwise>
+									<a href="<c:url value='?action=${actCR}&command=${commIdx}&id=${client.id}' />">詳細を見る</a>
+								</c:otherwise>
+							</c:choose></td>
+						<td><c:choose>
+								<c:when test="${client.deleteFlag == AttributeConst.DEL_FLAG_TRUE.getIntegerValue()}">（削除済み）</c:when>
+								<c:otherwise>
+									<a href="<c:url value='?action=${actRep}&command=${commNew}&id=${client.id}' />">日報作成</a>
+								</c:otherwise>
+							</c:choose></td>
 					</tr>
 				</c:forEach>
 			</tbody>

@@ -37,6 +37,10 @@
 						</pre></td>
 				</tr>
 				<tr>
+				    <th>顧客</th>
+				    <td><c:out value="${report.client.name}"/></td>
+				</tr>
+				<tr>
 					<th>登録日時</th>
 					<fmt:parseDate value="${report.createdAt}"
 						pattern="yyyy-MM-dd'T'HH:mm:ss" var="createDay" type="date" />

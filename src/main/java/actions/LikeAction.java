@@ -34,7 +34,7 @@ public class LikeAction extends ActionBase {
 		 //idを条件に従業員データを論理削除する
         service.updateLike(toNumber(getRequestParam(AttributeConst.REP_ID)));
 
-        //セッションに削除完了のフラッシュメッセージを設定
+        //セッションにいいね完了のフラッシュメッセージを設定
         putSessionScope(AttributeConst.FLUSH, MessageConst.I_LIKED.getMessage());
 
         //一覧画面にリダイレクト

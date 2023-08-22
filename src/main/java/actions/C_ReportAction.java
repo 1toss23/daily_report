@@ -10,6 +10,7 @@ import actions.views.ReportView;
 import constants.AttributeConst;
 import constants.ForwardConst;
 import constants.JpaConst;
+import constants.MessageConst;
 import services.C_ReportService;
 
 public class C_ReportAction extends ActionBase {
@@ -29,39 +30,16 @@ public class C_ReportAction extends ActionBase {
 		service.close();
 	}
 
-//	public void index() throws ServletException, IOException {
-//
-//		ClientView client = (ClientView) getSessionScope(AttributeConst.CLI_ID);
-//
-//		int page = getPage();
-//		List<ReportView> report = service.getClientPerPage(client, page);
-//
-//		long ReportClient = service.countAllClient(client);
-//
-//		putRequestScope(AttributeConst.REPORTS, report);
-//		putRequestScope(AttributeConst.CLI_COUNT, ReportClient);
-//		putRequestScope(AttributeConst.MAX_ROW, JpaConst.ROW_PER_PAGE);
-//
-//		String flush = getSessionScope(AttributeConst.FLUSH);
-//		if(flush != null) {
-//			putRequestScope(AttributeConst.FLUSH, flush);
-//			removeSessionScope(AttributeConst.FLUSH);
-//		}
-//
-//		forward(ForwardConst.FW_CLI_SHOW);
-//
-//	}
-
 	public void index() throws ServletException, IOException {
 
 		ClientView client = service.findOne(toNumber(getRequestParam(AttributeConst.CLI_ID)));
 
 		int page = getPage();
-		List<ReportView> report = service.getClientPerPage(client, page);
+		List<ReportView> reports = service.getClientPerPage(client, page);
 
 		long ReportClient = service.countAllClient(client);
 
-		putRequestScope(AttributeConst.REPORTS, report);
+		putRequestScope(AttributeConst.REPORTS, reports);
 		putRequestScope(AttributeConst.CLI_COUNT, ReportClient);
 		putRequestScope(AttributeConst.MAX_ROW, JpaConst.ROW_PER_PAGE);
 
@@ -72,7 +50,35 @@ public class C_ReportAction extends ActionBase {
 		}
 
 		forward(ForwardConst.FW_CLI_SHOW);
-
 	}
 
+	/*
+	 * 商談状況完了フラグを立てる
+	 */
+	public void update() throws ServletException, IOException {
+
+		 //idを条件に従業員データを論理削除する
+        service.update(toNumber(getRequestParam(AttributeConst.CLI_ID)));
+
+        //セッションにいいね完了のフラッシュメッセージを設定
+        putSessionScope(AttributeConst.FLUSH, MessageConst.I_SITUATION_TURE.getMessage());
+
+        //一覧画面にリダイレクト
+        redirect(ForwardConst.ACT_CLI, ForwardConst.CMD_INDEX);
+		}
+
+	/*
+	 * 商談状況完了フラグを取り消す
+	 */
+	public void destroy() throws ServletException, IOException {
+
+		 //idを条件に従業員データを論理削除する
+        service.destroy(toNumber(getRequestParam(AttributeConst.CLI_ID)));
+
+        //セッションに削除完了のフラッシュメッセージを設定
+        putSessionScope(AttributeConst.FLUSH, MessageConst.I_SITUATION_FALSE.getMessage());
+
+        //一覧画面にリダイレクト
+        redirect(ForwardConst.ACT_CLI, ForwardConst.CMD_INDEX);
+		}
 }

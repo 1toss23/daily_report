@@ -54,7 +54,7 @@
             </c:forEach>
         </div>
         <div>
-			<a href="<c:url value='?action=${actRep}&command=${commNew}' />">新規日報の登録</a>&nbsp;&nbsp;
+			<a href="<c:url value='?action=${actCli}&command=${commIdx}' />">新規日報の登録</a>&nbsp;&nbsp;
 			<a href="<c:url value='?action=${actCli}&command=${commNew}' />">顧客の追加</a>&nbsp;&nbsp;
 		</div>
     </c:param>

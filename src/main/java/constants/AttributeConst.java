@@ -66,8 +66,8 @@ public enum AttributeConst {
 	CLI_DATE("client_date"),
 
 	//顧客の商談状況
-	SIT_SALE(0),
-	SIT_COMPLET(1),
+	SIT_TRUE(0),
+	SIT_FALSE(1),
 
 	//顧客情報
 	CLIENT_REP("client_report");

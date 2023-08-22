@@ -64,7 +64,6 @@ public class ClientAction extends ActionBase {
 		if(cv == null || cv.getDeleteFlag() == AttributeConst.DEL_FLAG_TRUE.getIntegerValue()) {
 			forward(ForwardConst.FW_ERR_UNKNOWN);
 			return;
-
 		}
 
 		putRequestScope(AttributeConst.CLIENT, cv);
@@ -90,7 +89,7 @@ public class ClientAction extends ActionBase {
 
 		ClientView cv = service.findOne(toNumber(getRequestParam(AttributeConst.CLI_ID)));
 
-		if(cv == null) {
+		if(cv == null || cv.getDeleteFlag() == AttributeConst.DEL_FLAG_TRUE.getIntegerValue()) {
 			forward(ForwardConst.FW_ERR_UNKNOWN);
 
 		}else{
@@ -112,7 +111,7 @@ public class ClientAction extends ActionBase {
 			ClientView cv = new ClientView(
 					null,
 					getRequestParam(AttributeConst.CLI_NAME),
-					AttributeConst.SIT_SALE.getIntegerValue(),
+					AttributeConst.SIT_TRUE.getIntegerValue(),
 					null,
 					null,
 					getRequestParam(AttributeConst.CLI_ADDRESS),

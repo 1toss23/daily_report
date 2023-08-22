@@ -53,8 +53,6 @@ public class ReportView {
      */
     private LocalDateTime updatedAt;
 
-
-
     //いいねしたかどうか
     private Integer likeFlag;
 

@@ -5,6 +5,7 @@
 <%@ page import="constants.ForwardConst"%>
 <%@ page import="constants.AttributeConst"%>
 
+<c:set var="actCli" value="${ForwardConst.ACT_CLI.getValue()}" />
 <c:set var="actRep" value="${ForwardConst.ACT_REP.getValue()}" />
 <c:set var="commIdx" value="${ForwardConst.CMD_INDEX.getValue()}" />
 <c:set var="commShow" value="${ForwardConst.CMD_SHOW.getValue()}" />
@@ -24,6 +25,7 @@
 					<th class="report_name">氏名</th>
 					<th class="report_date">日付</th>
 					<th class="report_title">タイトル</th>
+					<th class="report_client">顧客</th>
 					<th class="report_like">いいね</th>
 					<th class="report_action">操作</th>
 				</tr>
@@ -37,8 +39,7 @@
 						<td class="report_date"><fmt:formatDate value='${reportDay}'
 								pattern='yyyy-MM-dd' /></td>
 						<td class="report_title">${report.title}</td>
-
-
+						<td class="report_client">${report.client.name}</td>
 						<td class="report_like_image"><c:if
 								test="${sessionScope.login_employee.id != report.employee.id}">
 								<c:choose>
@@ -76,7 +77,7 @@
 		</div>
 
 		<p>
-			<a href="<c:url value='?action=${actRep}&command=${commNew}' />">新規日報の登録</a>
+			<a href="<c:url value='?action=${actCli}&command=${commIdx}' />">新規日報の登録</a>
 		</p>
 
 	</c:param>

@@ -14,14 +14,14 @@ public class ClientConverter {
 		return new Client(
 				cv.getId(),
 				cv.getName(),
-				cv.getSituationFlag() == null ? null
-						: cv.getSituationFlag() == AttributeConst.CLI_SITUATION.getIntegerValue() ? JpaConst.SIT_TURE
-								: JpaConst.SIT_FALSE,
+				cv.getSituationFlag(),
 				cv.getCreateAt(),
 				cv.getUpdateAt(),
 				cv.getAddress(),
-				cv.getDeleteFlag() == null ? null
-						: cv.getDeleteFlag() == AttributeConst.DEL_FLAG_TRUE.getIntegerValue() ? JpaConst.CLI_DEL_TRUE
+				cv.getDeleteFlag() == null?
+						 null
+						: cv.getDeleteFlag() == AttributeConst.DEL_FLAG_TRUE.getIntegerValue()
+								? JpaConst.CLI_DEL_TRUE
 								: JpaConst.CLI_DEL_FALSE,
 				EmployeeConverter.toModel(cv.getEmployee()));
 	}
@@ -34,15 +34,15 @@ public class ClientConverter {
 		return new ClientView(
 				c.getId(),
 				c.getName(),
-				c.getSituationFlag() == null ? null
-						: c.getSituationFlag() == AttributeConst.CLI_SITUATION.getIntegerValue() ? JpaConst.SIT_TURE
-								: JpaConst.SIT_FALSE,
+				c.getSituationFlag(),
 				c.getCreatedAt(),
 				c.getUpdatedAt(),
 				c.getAddress(),
-				c.getDeleteFlag() == null ? null
-						: c.getDeleteFlag() == AttributeConst.DEL_FLAG_TRUE.getIntegerValue() ? JpaConst.CLI_DEL_TRUE
-								: JpaConst.CLI_DEL_FALSE,
+				c.getDeleteFlag() == null
+                        ? null
+                        : c.getDeleteFlag() == JpaConst.EMP_DEL_TRUE
+                                ? AttributeConst.DEL_FLAG_TRUE.getIntegerValue()
+                                : AttributeConst.DEL_FLAG_FALSE.getIntegerValue(),
 				EmployeeConverter.toView(c.getEmployee()));
 	}
 

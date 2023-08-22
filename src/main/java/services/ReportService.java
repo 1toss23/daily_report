@@ -3,11 +3,14 @@ package services;
 import java.time.LocalDateTime;
 import java.util.List;
 
+import actions.views.ClientConverter;
+import actions.views.ClientView;
 import actions.views.EmployeeConverter;
 import actions.views.EmployeeView;
 import actions.views.ReportConverter;
 import actions.views.ReportView;
 import constants.JpaConst;
+import models.Client;
 import models.Report;
 import models.validators.ReportValidator;
 
@@ -152,5 +155,15 @@ public class ReportService extends ServiceBase {
         em.getTransaction().commit();
 
     }
+
+	public ClientView findClient(int id) {
+		Client c = findClientinternal(id);
+		return ClientConverter.toView(c);
+	}
+
+	private Client findClientinternal(int id) {
+		Client c = em.find(Client.class, id);
+		return c;
+	}
 
 }
