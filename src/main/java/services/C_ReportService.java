@@ -49,7 +49,6 @@ public class C_ReportService extends ServiceBase {
 
 	private Client findOneinternal(int id) {
 		Client c = em.find(Client.class, id);
-
 		return c;
 	}
 
