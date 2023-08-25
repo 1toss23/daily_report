@@ -19,9 +19,14 @@
 
 		<h3>${report.client.name}   詳細ページ</h3>
 
-		<h3>現在商談状況　： ${report.client.situationFlag}</h3>
+		<h3>現在商談状況　： <c:choose>
+								<c:when test="${client.situationFlag == AttributeConst.SIT_TRUE.getIntegerValue()}">商談中</c:when>
+								<c:otherwise>
+					  	           商談完了
+					  	        </c:otherwise>
+							</c:choose></h3>
 
-        <h3>商談状況報告： <button type="submit" onclick="location.href='?action=${actCR}&command=${commUpd}&id=${report.client.id}'">商談中</button> <button type="submit" onclick="location.href='?action=${actCR}&command=${commDes}&id=${report.client.id}'">商談完了</button></h3>
+        <h3>商談状況報告： <button type="submit" onclick="location.href='?action=${actCR}&command=${commUpd}&id=${report.client.id}'">商談完了</button> <button type="submit" onclick="location.href='?action=${actCR}&command=${commDes}&id=${report.client.id}'">商談完了取消</button></h3>
 
 		<h3>顧客登録者：${report.employee.name}</h3>
 
