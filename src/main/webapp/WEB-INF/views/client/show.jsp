@@ -17,7 +17,7 @@
 <c:import url="/WEB-INF/views/layout/app.jsp">
 	<c:param name="content">
 
-		<h3>${report.client.name}   詳細ページ</h3>
+		<h3>${client.name}   詳細ページ</h3>
 
 		<h3>現在商談状況　： <c:choose>
 								<c:when test="${client.situationFlag == AttributeConst.SIT_TRUE.getIntegerValue()}">商談中</c:when>
@@ -26,11 +26,11 @@
 					  	        </c:otherwise>
 							</c:choose></h3>
 
-        <h3>商談状況報告： <button type="submit" onclick="location.href='?action=${actCR}&command=${commUpd}&id=${report.client.id}'">商談完了</button> <button type="submit" onclick="location.href='?action=${actCR}&command=${commDes}&id=${report.client.id}'">商談完了取消</button></h3>
+        <h3>商談状況報告： <button type="submit" onclick="location.href='?action=${actCR}&command=${commUpd}&id=${client.id}'">商談完了</button> <button type="submit" onclick="location.href='?action=${actCR}&command=${commDes}&id=${client.id}'">商談完了取消</button></h3>
 
-		<h3>顧客登録者：${report.employee.name}</h3>
+		<h3>顧客登録者：${client.employee.name}</h3>
 
-        <h3>住所：${report.client.address}</h3>
+        <h3>住所：${client.address}</h3>
 
 		<table id="report_list">
             <tbody>
@@ -46,14 +46,14 @@
                         <td class="report_name"><c:out value="${report.employee.name}" /></td>
                         <td class="report_date"><fmt:formatDate value='${reportDay}' pattern='yyyy-MM-dd' /></td>
                         <td class="report_title">${report.title}</td>
-                        <td class="report_action"><a href="<c:url value='?action=${actRep}&command=${commShow}&id=${report.client.id}' />">詳細を見る</a></td>
+                        <td class="report_action"><a href="<c:url value='?action=${actRep}&command=${commShow}&id=${client.id}' />">詳細を見る</a></td>
                     </tr>
                 </c:forEach>
             </tbody>
         </table>
 
 		<p>
-			<a href="<c:url value='?action=${actCli}&command=${commEdt}&id=${report.client.id}'/>">顧客の修正</a>
+			<a href="<c:url value='?action=${actCli}&command=${commEdt}&id=${client.id}'/>">顧客の修正</a>
 		</p>
 
 		<p>

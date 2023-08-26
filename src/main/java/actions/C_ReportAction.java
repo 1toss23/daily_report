@@ -40,7 +40,9 @@ public class C_ReportAction extends ActionBase {
 		long ReportClient = service.countAllClient(client);
 
 		putRequestScope(AttributeConst.REPORTS, reports);
+		putRequestScope(AttributeConst.CLIENT, client);
 		putRequestScope(AttributeConst.CLI_COUNT, ReportClient);
+		putRequestScope(AttributeConst.PAGE, page); //ページ数
 		putRequestScope(AttributeConst.MAX_ROW, JpaConst.ROW_PER_PAGE);
 
 		String flush = getSessionScope(AttributeConst.FLUSH);

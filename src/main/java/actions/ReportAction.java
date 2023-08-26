@@ -166,7 +166,6 @@ public class ReportAction extends ActionBase {
 		} else {
 
 			putRequestScope(AttributeConst.REPORT, rv); //取得した日報データ
-			putSessionScope(AttributeConst.REPORT, rv);
 
 			//詳細画面を表示
 			forward(ForwardConst.FW_REP_SHOW);
